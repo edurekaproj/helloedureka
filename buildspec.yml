@@ -8,11 +8,12 @@ phases:
   build:
     commands:
     - echo "Entered build phase"
-    - mvn clean package
+#   - mvn clean package
+    - mvn clean prepare-package war:exploded
   post_build:
     commands:
     - echo "Entered the post-build phase"
-    - cp target/helloedureka.war .
+    - mv target/deploy .
 artifacts:
   files:
-    - helloedureka.war
+    - deploy/**/*
